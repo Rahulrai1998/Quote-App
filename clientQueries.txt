@@ -1,0 +1,121 @@
+
+-----------------------------
+query QueryUsers{
+  users{
+    _id
+    firstname
+    lastname
+    email
+  
+  }
+
+  ---------------------------
+  query QueryQuotes{
+    quotes{
+    name
+    by
+  }
+}
+
+----------------------------------
+
+query getQueryById($user_id:ID!){
+  quote(by:$user_id){
+    name
+    by
+    
+  }
+}
+
+------------------------------------
+
+query getUserById{
+  user(_id:"23131"){
+    _id
+    firstname
+    lastname
+    email
+  }
+}
+
+
+------------------------------------------
+USING QUERY VARIABLES
+
+query getUserById($user_id:ID!){
+  user(_id:$user_id)
+  {
+    firstname
+    lastname
+    email
+    
+	}
+}
+
+
+----------------------------------------------------------------------------------------------------
+
+MUTATION
+
+mutation addNewUser($firstname:String! , $lastname:String! , $email:String! , $password :String!){
+  signupNewUser(firstname:$firstname , lastname:$lastname , email:$email , password:$password)
+  {
+    _id
+    firstname
+    lastname
+    email
+    password
+  }
+}
+
+
+//PASSING INPUT TYPE ARGUMENT
+mutation addUser($v:mutationArgs!)
+{
+  signupNewUser(data:$v)
+  {
+    firstname
+    lastname
+    email
+    password
+  }
+}
+output:
+{
+  "data": {
+    "signupNewUser": {
+      "_id": "ac0fcd5e47",
+      "firstname": "gopal",
+      "lastname": "Barman",
+      "email": "abc@gmail.com",
+      "password": "12364"
+    }
+  }
+}
+
+
+// Setting ALIAS "user" to the mutation query
+mutation addUser($v:mutationArgs!)
+{
+  user:signupNewUser(data:$v)
+  {
+    _id
+    firstname
+    lastname
+    email
+    password
+  }
+}
+
+output:
+{
+  "data": {
+    "user": {
+      "_id": "5f4e980c3e",
+      "firstname": "gopal",
+      "lastname": "Barman",
+      "email": "abc@gmail.com",
+      "password": "12364"
+    }
+  }
+}
