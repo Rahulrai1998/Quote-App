@@ -5,7 +5,9 @@ import { GET_MY_PROFILE } from "../graphql/queries";
 
 export default function Profile() {
   const navigate = useNavigate()
-  const { loading, error, data } = useQuery(GET_MY_PROFILE);
+  const { loading, error, data } = useQuery(GET_MY_PROFILE,{
+    fetchPolicy:"cache-and-network"
+  });
   if (loading) return <h2>Loading</h2>;
   if (error) console.log(error);
   if(!localStorage.getItem("token")){

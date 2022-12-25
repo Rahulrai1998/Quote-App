@@ -15,6 +15,7 @@ const Login = () => {
       localStorage.setItem("token", data.userToken.token);
       navigate("/");
     },
+    refetchQueries: ['getAllQuotes','getMyProfile'],
   });
   if (loading) {
     return (
