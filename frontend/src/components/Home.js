@@ -3,18 +3,19 @@ import React, { useEffect } from "react";
 
 import { GET_ALL_QUOTES } from "../graphql/queries";
 import Posts from "./Posts";
-
+import Loader from "./Loader";
+import CreateButton from "./CreateButton";
 
 export default function Home() {
-  const { loading, error, data } = useQuery(GET_ALL_QUOTES,{
-    fetchPolicy:"cache-and-network"
+  const { loading, error, data } = useQuery(GET_ALL_QUOTES, {
+    fetchPolicy: "cache-and-network",
   });
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <Loader />;
   if (error) {
     console.log(error.message);
   }
-  if(data.quotes.length == 0){
-    <h1>No quotes</h1>
+  if (data.quotes.length == 0) {
+    <h1>No quotes</h1>;
   }
   // useEffect(() => {
   //   fetch("http://localhost:4000", {
@@ -50,7 +51,14 @@ export default function Home() {
     <div className="container">
       {data.quotes.map((quote) => {
         return (
-          <Posts {...quote}/>
+          <>
+            <Posts
+              id={quote.by._id}
+              firstname={quote.by.firstname}
+              name={quote.name}
+            />
+           
+          </>
         );
       })}
     </div>

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* position: relative; */
 }
 
 .App-logo {
@@ -38,14 +39,23 @@
 }
 
 .myStyles {
-  max-width:400px ;
   margin-top: 8%;
   padding: 2em;
-  box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.09);
+  /* box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.09); */
   border-radius: 1px;
 }
 
 .inputStyles:focus {
   box-shadow: none !important;
   border-bottom: teal 2px solid !important;
+}
+
+.loader-custom-styles {
+  margin-top: 200px;
+}
+
+.create-btn-custom-styles {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
 }

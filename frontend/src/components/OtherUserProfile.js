@@ -3,21 +3,22 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { GET_MY_PROFILE, GET_OTHERS_PROFILE } from "../graphql/queries";
 import { useParams } from "react-router-dom";
+import Posts from "./Posts";
+import Loader from "./Loader";
 
 export default function OtherUserProfile() {
   const { userId } = useParams();
 
-  console.log(userId)
+  console.log(userId);
 
   const navigate = useNavigate();
-  const { loading, error, data } = useQuery(GET_OTHERS_PROFILE,{
-    variables:{
-        user_id: userId
-    }
-    
+  const { loading, error, data } = useQuery(GET_OTHERS_PROFILE, {
+    variables: {
+      user_id: userId,
+    },
   });
   console.log(data);
-  if (loading) return <h2>Loading</h2>;
+  if (loading) return <Loader />;
   if (error) console.log(error);
   if (!localStorage.getItem("token")) {
     navigate("/login");
@@ -40,9 +41,9 @@ export default function OtherUserProfile() {
       {data.user.quotes.map((quote) => {
         return (
           <>
-            <blockquote className="left-align">
-              <h6>{quote.name}</h6>
-            </blockquote>
+            <>
+              <Posts name={quote.name} id={quote.id} />
+            </>
           </>
         );
       })}
