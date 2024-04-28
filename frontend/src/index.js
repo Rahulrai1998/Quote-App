@@ -13,7 +13,7 @@ import {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const client = new ApolloClient({
-  uri: "/graphql",
+  uri: "http://localhost:4000/graphql",
   cache: new InMemoryCache(),
   headers:{
     authorization:localStorage.getItem("token") || ""

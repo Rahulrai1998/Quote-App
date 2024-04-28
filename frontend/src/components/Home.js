@@ -1,7 +1,8 @@
 import { useQuery } from "@apollo/client";
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import { GET_ALL_QUOTES } from "../graphql/queries";
+import Posts from "./Posts";
 
 
 export default function Home() {
@@ -46,15 +47,10 @@ export default function Home() {
   // }, []);
 
   return (
-    <div className="container ">
+    <div className="container">
       {data.quotes.map((quote) => {
         return (
-          <>
-            <blockquote className="left-align">
-              <h6>{quote.name}</h6>
-              <Link to={`/profile/${quote.by._id}`}><p className="right-align">~ {quote.by.firstname}</p></Link>
-            </blockquote>
-          </>
+          <Posts {...quote}/>
         );
       })}
     </div>
