@@ -1,4 +1,3 @@
-import { quotes, users } from "./fakedb.js";
 // import { randomBytes, sign } from "crypto";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";

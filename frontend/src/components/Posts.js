@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Posts = ({ name, id = "", firstname = "" }) => {
   return (
@@ -45,9 +46,13 @@ const Posts = ({ name, id = "", firstname = "" }) => {
                 }}
                 className="flow-text"
               >
-                {name}
+                {`"${name}..."`}
               </p>
             </div>
+            <DeletePostBtn>
+              <i class="material-icons">delete</i>
+            </DeletePostBtn>
+
             {/* <div className="card-action">
               <a href="#">This is a link</a>
               <a href="#">This is a link</a>
@@ -66,3 +71,5 @@ const Posts = ({ name, id = "", firstname = "" }) => {
 };
 
 export default Posts;
+
+const DeletePostBtn = styled.div``;

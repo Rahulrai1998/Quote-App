@@ -6,18 +6,17 @@ const typeDefs = gql`
     user(_id: ID!): User
     quotes: [QuoteWithName]
     quote(by: ID!): [Quote]
-    myprofile:User
+    myprofile: User
   }
 
-  type QuoteWithName{
-    name:String
-    by:IdWithName
+  type QuoteWithName {
+    name: String
+    by: IdWithName
   }
 
-  type IdWithName{
-    _id:String
-    firstname:String
-
+  type IdWithName {
+    _id: String
+    firstname: String
   }
 
   type User {
@@ -28,21 +27,21 @@ const typeDefs = gql`
     password: String!
     quotes: [Quote]
   }
- 
+
   type Quote {
     name: String!
     by: ID!
   }
 
-  type Token{
-    token:String!
+  type Token {
+    token: String!
   }
-        
+
   type Mutation {
     signupNewUser(data: mutationArgs!): User
-    signInUser(signIndata: UserSignInArgs!) : Token
-    createQuote(name:String):String
-    
+    signInUser(signIndata: UserSignInArgs!): Token
+    createQuote(name: String): String
+    deleteQuote(id: ID!): String
   }
 
   input mutationArgs {
@@ -53,7 +52,6 @@ const typeDefs = gql`
   }
 
   input UserSignInArgs {
-    
     email: String!
     password: String!
   }

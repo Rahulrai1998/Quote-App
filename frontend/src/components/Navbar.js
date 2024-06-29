@@ -7,11 +7,11 @@ export default function Navbar() {
     <div className="navbar-fixed">
       <nav>
         <div className="nav-wrapper teal lighten-2">
-          <Link to="/" className="right brand-logo">
-            Quotes
+          <Link to="/" className="center brand-logo">
+            "Quotes..."
           </Link>
 
-          <ul id="nav-mobile" className="left hide-on-med-and-down">
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
             {token ? (
               <>
                 <li>
