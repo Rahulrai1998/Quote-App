@@ -83,6 +83,11 @@ const resolvers = {
       await newQuote.save();
       return "Quote saved successfully";
     },
+
+    // Delete quote by id
+    deleteQuote: async ()=>{
+      
+    }
   },
 };
 

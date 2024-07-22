@@ -41,7 +41,12 @@ const typeDefs = gql`
     signupNewUser(data: mutationArgs!): User
     signInUser(signIndata: UserSignInArgs!): Token
     createQuote(name: String): String
-    deleteQuote(id: ID!): String
+    deleteQuote(id: ID!): DeleteMessage
+  }
+
+  type DeleteMessage {
+    success: Boolean
+    message: String
   }
 
   input mutationArgs {

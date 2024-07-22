@@ -7,7 +7,10 @@ const Posts = ({ name, id = "", firstname = "" }) => {
     <>
       <div className="row">
         <div className="col" style={{ float: "none", margin: "auto" }}>
-          <div className="card  darken-1">
+          <div
+            className="card  darken-1"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
             <div className="card-content white-text">
               {firstname ? (
                 <span className="card-title">
@@ -72,4 +75,6 @@ const Posts = ({ name, id = "", firstname = "" }) => {
 
 export default Posts;
 
-const DeletePostBtn = styled.div``;
+const DeletePostBtn = styled.div`
+  padding: 10px;
+`;
