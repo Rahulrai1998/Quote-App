@@ -26,3 +26,12 @@ export const CREATE_QUOTES = gql`
     output: createQuote(name: $quote)
   }
 `;
+
+export const DELETE_QUOTE = gql`
+  mutation ($id: ID!) {
+    deleteQuote(id: $id) {
+      success
+      message
+    }
+  }
+`;

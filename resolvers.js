@@ -17,7 +17,7 @@ const resolvers = {
     quote: async (_, { by }) => await Quote.findOne({ by }), //quotes.filter((q) => q.by == by)
     myprofile: async (_, args, { userId }) => {
       if (!userId) throw new Error("Not logged in");
-      return await User.findOne({_id: userId });
+      return await User.findOne({ _id: userId });
     },
   },
 
@@ -85,9 +85,29 @@ const resolvers = {
     },
 
     // Delete quote by id
-    deleteQuote: async ()=>{
-      
-    }
+    deleteQuote: async (_, { id }) => {
+      try {
+        const deletedQuoteById = await Quotes.findByIdAndDelete(id);
+        if (deletedQuoteById) {
+          await deletedQuoteById.save();
+          return {
+            success: true,
+            message: "Quote deleted",
+          };
+        } else {
+          return {
+            success: false,
+            message: "Quote not found",
+          };
+        }
+      } catch (error) {
+        return {
+          success: false,
+          message: "Error deleting quote",
+          error: error.message,
+        };
+      }
+    },
   },
 };
 
