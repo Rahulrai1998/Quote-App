@@ -15,7 +15,6 @@ import express from "express";
 import http from "http";
 import path from "path";
 
-//TESTING BRANCHES
 
 const port = process.env.PORT || 4000;
 
