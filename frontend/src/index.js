@@ -11,7 +11,6 @@ import {
   gql,
 } from "@apollo/client";
 
-// testing
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
