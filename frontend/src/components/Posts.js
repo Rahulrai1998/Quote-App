@@ -72,7 +72,7 @@ const Posts = ({ name, id = "", firstname = "" }) => {
               </p>
             </div>
             <DeletePostBtn onClick={() => handleDeletePost(id)}>
-              <i class="material-icons">delete</i>
+              <i className="material-icons">delete</i>
             </DeletePostBtn>
 
             {/* <div className="card-action">

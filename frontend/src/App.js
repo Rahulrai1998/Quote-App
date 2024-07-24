@@ -20,7 +20,7 @@ function App() {
       <Profile />
       <CreateQuote /> */}
       </div>
-      <CreateButton />
+      {localStorage.getItem("token") && <CreateButton />}
     </>
   );
 }
