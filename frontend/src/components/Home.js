@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { GET_ALL_QUOTES } from "../graphql/queries";
 import Posts from "./Posts";
 import Loader from "./Loader";
-import CreateButton from "./CreateButton";
+import mongoose from "mongoose";
 
 export default function Home() {
   const { loading, error, data } = useQuery(GET_ALL_QUOTES, {
@@ -53,11 +53,12 @@ export default function Home() {
         return (
           <>
             <Posts
-              id={quote.by._id}
+              quoteId={quote._id}
+              key={quote._id}
+              by={quote.by._id}
               firstname={quote.by.firstname}
               name={quote.name}
             />
-           
           </>
         );
       })}

@@ -10,6 +10,7 @@ const typeDefs = gql`
   }
 
   type QuoteWithName {
+    _id: ID!
     name: String
     by: IdWithName
   }
@@ -29,6 +30,7 @@ const typeDefs = gql`
   }
 
   type Quote {
+    _id: ID!
     name: String!
     by: ID!
   }

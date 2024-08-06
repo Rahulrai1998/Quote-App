@@ -86,25 +86,20 @@ const resolvers = {
 
     // Delete quote by id
     deleteQuote: async (_, { id }) => {
-      try {
-        const deletedQuoteById = await Quotes.findByIdAndDelete(id);
-        if (deletedQuoteById) {
-          await deletedQuoteById.save();
-          return {
-            success: true,
-            message: "Quote deleted",
-          };
-        } else {
-          return {
-            success: false,
-            message: "Quote not found",
-          };
-        }
-      } catch (error) {
+      const { deletedCount } = await Quotes.deleteOne({
+        _id: id,
+      });
+      console.log("DELETE", deletedCount);
+      if (deletedCount) {
+        // await deletedQuoteById.save();
+        return {
+          success: true,
+          message: "Quote deleted",
+        };
+      } else {
         return {
           success: false,
-          message: "Error deleting quote",
-          error: error.message,
+          message: "Quote not found",
         };
       }
     },

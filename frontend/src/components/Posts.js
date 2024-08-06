@@ -5,20 +5,19 @@ import { DELETE_QUOTE } from "../graphql/mutations";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
-const Posts = ({ name, id = "", firstname = "" }) => {
+const Posts = ({ name, by = "", firstname = "", quoteId }) => {
   const navigate = useNavigate();
   const [deleteQuote, { loading, error, data }] = useMutation(DELETE_QUOTE, {
     onCompleted(data) {
       navigate("/");
-      console.log(data);
     },
     refetchQueries: ["getAllQuotes", "getMyProfile"],
   });
 
-  const handleDeletePost = (id) => {
+  const handleDeletePost = () => {
     deleteQuote({
       variables: {
-        id: id,
+        id: quoteId,
       },
     });
   };
@@ -35,7 +34,7 @@ const Posts = ({ name, id = "", firstname = "" }) => {
                 <span className="card-title">
                   {
                     <div className="header">
-                      <Link to={`/profile/${id}`}>
+                      <Link to={`/profile/${by}`}>
                         <img
                           className="circle responsive-img"
                           style={{
@@ -71,7 +70,7 @@ const Posts = ({ name, id = "", firstname = "" }) => {
                 {`"${name}..."`}
               </p>
             </div>
-            <DeletePostBtn onClick={() => handleDeletePost(id)}>
+            <DeletePostBtn onClick={() => handleDeletePost()}>
               <i className="material-icons">delete</i>
             </DeletePostBtn>
 
