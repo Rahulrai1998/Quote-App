@@ -13,7 +13,6 @@ const Posts = ({ name, by = "", firstname = "", quoteId }) => {
     },
     refetchQueries: ["getAllQuotes", "getMyProfile"],
   });
-
   const handleDeletePost = () => {
     deleteQuote({
       variables: {
